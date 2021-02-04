@@ -1,18 +1,31 @@
-This is a log file parser, it store result to csv files.
+LOG file parser, output as CSV file
+===================================
 
-It's a useful tool to analyze data in log file.
+![result image](result.png)
 
-Example:
+CSV have the advantages of data analysis. 
+By using this tool, you can turn LOG file into CSV Table.
+
+## Example
 
 ```
 $ python log_to_csv.py sample.log
 ```
 
-Results will store in "output" folder.
+And the results will store into **output** folder.
 
-Modify config.ini for your usage, you can reference output/debug.csv to select targetColumns.
+## config.ini
 
-(the sample.log is download from [https://www.microsoft.com/en-nz/download/details.aspx?id=37003](https://www.microsoft.com/en-nz/download/details.aspx?id=37003))
+Customize your **searchPatterns**, **targetColumns** and **headers**.
 
-***this is the first version of README, I'll add more guide later***
+## output/debug.csv
+
+Output of each search pattern's first result. 
+Use this result to adjust your targetColumns.
+
+## PlotJuggler
+
+The best visualization tool I've seen so far.
+
+[https://github.com/facontidavide/PlotJuggler](https://github.com/facontidavide/PlotJuggler)
 

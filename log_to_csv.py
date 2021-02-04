@@ -2,7 +2,7 @@
 
 import os
 
-regexPattern = '[ \(\)\[\]\r\n]'
+regexPattern = '[ \(\)\[\]\r\n]+'
 searchPatterns = []
 
 def getPath():
@@ -23,7 +23,7 @@ def loadINI(scriptPath):
         # Python 3
         import configparser as ConfigParser
 
-    config = ConfigParser.ConfigParser()
+    config = ConfigParser.ConfigParser(interpolation=None)
     config.read(os.path.join(scriptPath, "config.ini"))
 
     global searchPatterns
@@ -46,11 +46,12 @@ def searchInFile():
 
     import sys
 
-    if (len(sys.argv) < 2):
+    fileNames = [str for str in sys.argv if os.path.isfile(str) and (str != __file__)]
+    if not fileNames[0]:
         return
 
     matchline = []
-    with open(sys.argv[1], "r") as file:
+    with open(fileNames[0], "r") as file:
         for pattern in searchPatterns:
             matchline.append([line[line.find(pattern):] for line in file if (-1 != line.find(pattern))])
             file.seek(0)
